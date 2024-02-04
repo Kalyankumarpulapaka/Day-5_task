@@ -1,0 +1,114 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterating Over JSON in HTML</title>
+</head>
+<body>
+    <script type="application/json" id="resume-data">
+        {
+            "name": "Kalyan Kumar Pulapaka ",
+            "contact_info": {
+                "email": "kalyankumarpulapaka@example.com",
+                "phone": "8919280525",
+                "address": "salur vizianagaram, Andhra Pradesh"
+            },
+            "summary": "With over 1.5 years of experience in ServiceNow, I have developed strong skills in IT service management and automation. Managed a high volume of incident tickets, consistently meeting SLA targets. Conducted thorough troubleshooting and root cause analysis to resolve complex incidents, reducing recurring issues by 25%. Collaborated with cross-functional teams to streamline the incident management process, leading to a 15% reduction in resolution time. Maintained and updated the knowledge base to facilitate user self-service, resulting in a 30% decrease in incident requests. Provided exceptional customer support, resulting in a 95% satisfaction rate among end-users.",
+            "skills": [
+                "Javascript",
+                "CSS",
+                "HTML",
+                "Incident Management",
+                "Salesforce Administration",
+                "Python"
+            ],
+            "experience": [
+                {
+                    "title": "Application Support Engineer",
+                    "company": "teleperformance",
+                    "location": "Jaipur, Rajasthan",
+                    "dates": "2023 - Past",
+                    "responsibilities": [
+                        "Delivered technical support via chat and Email to international customers.",
+                        "Guided customers through troubleshooting steps and provided solutions to technical problems.",
+                        "Escalated issues to higher-level technical support when necessary.",
+                        "Assisted with product inquiries, warranty claims, and returns.",
+                        "Consistently met or exceeded performance targets, including customer satisfaction and resolution time.",
+                        "Collaborated with colleagues to share knowledge and improve support processes."
+                    ]
+                }
+            ],
+            "education": [
+                {
+                    "degree": "Bachelor of computer science",
+                    "institution": "Andhra University",
+                    "location": "salur",
+                    "dates": "2018 - 2021"
+                }
+            ],
+            "languages": [
+                {
+                    "language": "Python",
+                    "proficiency": "Intermediate"
+                },
+                {
+                    "language": "JavaScript",
+                    "proficiency": "Intermediate"
+                },
+                {
+                    "language": "java",
+                    "proficiency": "Basics"
+                }
+            ],
+            "certifications": [
+                {
+                    "title": "Documentation assistant",
+                    "authority": "NSDC",
+                    "date": "2018"
+                }
+            ]
+        }
+    </script>
+
+    <!-- Your HTML content here -->
+
+    <script>
+        // Accessing the JSON data
+        const resumeData = JSON.parse(document.getElementById('resume-data').textContent);
+
+        // Using for loop
+        for (const key in resumeData) {
+            if (resumeData.hasOwnProperty(key)) {
+                console.log(`Key: ${key}, Value: ${JSON.stringify(resumeData[key])}`);
+            }
+        }
+
+        // Using for...of loop
+        for (const [key, value] of Object.entries(resumeData)) {
+            console.log(`Key: ${key}, Value: ${JSON.stringify(value)}`);
+        }
+
+        // Using forEach loop for arrays
+        resumeData.skills.forEach(skill => {
+            console.log(`Skill: ${skill}`);
+        });
+
+        resumeData.experience.forEach(exp => {
+            console.log(`Experience: ${JSON.stringify(exp)}`);
+        });
+
+        resumeData.education.forEach(edu => {
+            console.log(`Education: ${JSON.stringify(edu)}`);
+        });
+
+        resumeData.languages.forEach(lang => {
+            console.log(`Language: ${JSON.stringify(lang)}`);
+        });
+
+        resumeData.certifications.forEach(cert => {
+            console.log(`Certification: ${JSON.stringify(cert)}`);
+        });
+    </script>
+</body>
+</html>
